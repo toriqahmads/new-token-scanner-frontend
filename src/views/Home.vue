@@ -78,7 +78,8 @@ export default {
       active_tab: 0,
       networks: [
         'bsc',
-        'avax'
+        'eth',
+        'ftm'
       ]
     }
   }
