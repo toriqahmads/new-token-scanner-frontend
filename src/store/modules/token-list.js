@@ -44,12 +44,16 @@ const tokenList = {
       const { network, ...params } = payload;
       try {
         const token_list = await getTokenList(network, params)
+        const items = this.getters['tokenList/items']
+
         if (token_list.tokens && token_list.tokens.length > 0) {
           commit('items', token_list.tokens)
           commit('last_visible', token_list.last_visible)
-          commit('has_next', true)
-        } else {
+          commit('has_next', token_list.last_visible && token_list.last_visible != '' ? true : false)
+        } else if (token_list.tokens && token_list.tokens.length < 1 && items.length > 0) {
           commit('has_next', false)
+        } else {
+          commit('reset')
         }
       } catch(err) {
         commit('error', err.message)
