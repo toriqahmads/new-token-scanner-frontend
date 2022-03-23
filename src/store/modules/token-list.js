@@ -31,12 +31,12 @@ const tokenList = {
       const { network, items, last_visible, has_next } = payload
       const index = _.findIndex(state.data, { network })
 
-      if (index > -1) {
-        items.map((item) => {
-          item.created_at = timeSince(item.created_at)
-          return item
-        })
+      items.map((item) => {
+        item.created_at = timeSince(item.created_at)
+        return item
+      })
 
+      if (index > -1) {
         state.data[index].items = [...state.data[index].items, ...items]
         state.data[index].last_visible = last_visible
         state.data[index].has_next = has_next
