@@ -79,7 +79,8 @@ export default {
       networks: [
         'bsc',
         'eth',
-        'ftm'
+        'ftm',
+        'matic'
       ]
     }
   }
